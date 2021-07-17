@@ -125,7 +125,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                 <Paper elevation={3} style={classes.paper}>
                     { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                         <EmailListRow email={email} key={index} />)
-                    } 
+                    }                 
                 </ Paper> 
             </div>
         );

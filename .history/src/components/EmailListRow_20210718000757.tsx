@@ -5,9 +5,8 @@ import {Print, Launch, AccountCircle, StarBorder, Reply, MoreVert, DoubleArrow} 
 import { connect } from "react-redux";
 import { getAction } from "../actions/emailcrm";
 import { thunkApiCall } from "../services/thunks";
-import { EmailCRM, EmailCRMList } from "../types";
+import { EmailCRM} from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
-import EmailListRow from "./EmailListRow";
 
 const useStyles = () => {
     return {
@@ -22,9 +21,8 @@ const useStyles = () => {
             margin: 0,
             height: 'auto'
         },
-        column: {
-            overflowX: 'hidden',
-            textOverflow: 'ellipsis',
+        iconLM: {
+            textAlign: 'right'
         },
         breadcrumbsFont: {
             fontSize: '12px',
@@ -54,23 +52,10 @@ const useStyles = () => {
         }
     }
 }
-interface EmailCRMProps {
-    match?: match;
-    emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
-    getEmailCRM: typeof thunkApiCall;
-    errorMessage?: string;
-    isFetching: boolean;
-    updated: boolean;
-}  
 
-interface EmailCRMState {
-    emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
-    snackbarOpen: boolean;
-    autoHideDuration: number;
-  } 
-class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
+
+
+export default class EmailListRow extends React.Component<EmailCRMProps, EmailCRMState>{
     constructor(props) {
       super(props);
       // this.handleChange = this.handleChange.bind(this);
@@ -97,8 +82,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
   
     componentDidUpdate(prevProps) {
       // reset page if items array has changed
-      if (this.props.emailCrmList !== prevProps.emailCrmList) {
-        this.setState({ emailCrmList: this.props.emailCrmList });
+      if (this.props.emailCrm !== prevProps.emailCrm) {
+        this.setState({ emailCrm: this.props.emailCrm });
       }
       if (
         this.props.updated !== prevProps.updated &&
@@ -117,41 +102,25 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { isFetching, emailCrm, emailCrmList } = this.props;
-        console.log(this.props);
+        // const { isFetching, emailCrm, emailCrmList } = this.props;
+        // console.log(this.props);
+        const email = this.props.email;
         
         return (
-            <div style={{display: 'flex'}}>
-                <Paper elevation={3} style={classes.paper}>
-                    { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                        <EmailListRow email={email} key={index} />)
-                    } 
-                </ Paper> 
-            </div>
+                   
+          <Grid item container xs={12} style={classes.containerP} key={email.id}>
+              <Grid item xs={2}>
+              </Grid>
+              <Grid item xs={3}>
+                  {email.from}
+              </Grid>
+              <Grid item xs={6}>
+                  {email.subject}
+              </Grid>
+              <Grid item xs={'auto'}>
+                  {email.date}
+              </Grid>
+          </Grid> 
         );
     }
 }
-
-function mapStateToProps(state) {
-    const {
-      emailCrm,
-      emailCrmList,
-      isFetching,
-      updated,
-    } = state.emailCrm;
-  
-    return {
-      emailCrm,
-      emailCrmList,
-      isFetching,
-      updated,
-    };
-}
-  
-function mapDispatchToProps(dispatch) {
-    return {
-      getEmailCRM: (action) => dispatch(thunkApiCall(action)),
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Inbox);

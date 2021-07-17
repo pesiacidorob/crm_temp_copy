@@ -7,7 +7,6 @@ import { getAction } from "../actions/emailcrm";
 import { thunkApiCall } from "../services/thunks";
 import { EmailCRM, EmailCRMList } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
-import EmailListRow from "./EmailListRow";
 
 const useStyles = () => {
     return {
@@ -23,6 +22,8 @@ const useStyles = () => {
             height: 'auto'
         },
         column: {
+            display: 'flex',
+            flexDirection: 'row',
             overflowX: 'hidden',
             textOverflow: 'ellipsis',
         },
@@ -124,8 +125,20 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
                     { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                        <EmailListRow email={email} key={index} />)
-                    } 
+                        (<Grid item container xs={12} style={classes.containerP} >
+                            <Grid item xs={2} style={classes.containerP} >
+                            </Grid>
+                            <Grid item xs={3}>
+                                {email.from}
+                            </Grid>
+                            <Grid item xs={6}>
+                                {email.subject}
+                            </Grid>
+                            <Grid item xs={'auto'}>
+                                {email.date}
+                            </Grid>
+                        </Grid> ))
+                    }                 
                 </ Paper> 
             </div>
         );
