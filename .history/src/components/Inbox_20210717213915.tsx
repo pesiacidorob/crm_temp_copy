@@ -55,7 +55,7 @@ const useStyles = () => {
 interface EmailCRMProps {
     match?: match;
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
+    emailCrmList: EmailCRMList;
     getEmailCRM: typeof thunkApiCall;
     errorMessage?: string;
     isFetching: boolean;
@@ -64,7 +64,7 @@ interface EmailCRMProps {
 
 interface EmailCRMState {
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
+    emailCrmList: EmailCRMList;
     snackbarOpen: boolean;
     autoHideDuration: number;
   } 
@@ -78,7 +78,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     }
   
     // state = {
-    //   emailCrm: {},
+    //   emailCrm: {} as EmailCRM,
     //   emailCrmList: [],
     //   snackbarOpen: false,
     //   autoHideDuration: 2000,
@@ -118,7 +118,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
         console.log(this.props);
-        // console.log(this.props.emailCrmList.length);
+        console.log(emailCrmList.length);
         
         return (
             <div style={{display: 'flex'}}>

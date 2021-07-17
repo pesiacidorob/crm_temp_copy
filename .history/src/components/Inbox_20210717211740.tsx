@@ -5,7 +5,7 @@ import {Print, Launch, AccountCircle, StarBorder, Reply, MoreVert, DoubleArrow} 
 import { connect } from "react-redux";
 import { getAction } from "../actions/emailcrm";
 import { thunkApiCall } from "../services/thunks";
-import { EmailCRM, EmailCRMList } from "../types";
+import { EmailCRM} from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 
 const useStyles = () => {
@@ -55,7 +55,7 @@ const useStyles = () => {
 interface EmailCRMProps {
     match?: match;
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
+    // emailCrmList: EmailCRM[];
     getEmailCRM: typeof thunkApiCall;
     errorMessage?: string;
     isFetching: boolean;
@@ -77,12 +77,12 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       // this.onSnackBarClose = this.onSnackBarClose.bind(this);
     }
   
-    // state = {
-    //   emailCrm: {},
-    //   emailCrmList: [],
-    //   snackbarOpen: false,
-    //   autoHideDuration: 2000,
-    // };  
+    state = {
+      emailCrm: {} as EmailCRM,
+      emailCrmList: [] as EmailCRM[],
+      snackbarOpen: false,
+      autoHideDuration: 2000,
+    };  
   
     componentDidMount() {
     //   @ts-ignore
@@ -118,12 +118,11 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
         console.log(this.props);
-        // console.log(this.props.emailCrmList.length);
         
         return (
             <div style={{display: 'flex'}}>
                 <Paper elevation={3} style={classes.paper}>
-                    { emailCrmList.length > 0 && emailCrmList.map((email, index) => 
+                    {/* { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                         (<Grid item container xs={12} style={classes.containerP} key={index}>
                             <Grid item xs={2}>
                             </Grid>
@@ -137,7 +136,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                 {email.date}
                             </Grid>
                         </Grid> ))
-                    }                 
+                    }                  */}
                 </ Paper> 
             </div>
         );

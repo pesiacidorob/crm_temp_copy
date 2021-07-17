@@ -55,7 +55,7 @@ const useStyles = () => {
 interface EmailCRMProps {
     match?: match;
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
+    emailCrmList: EmailCRMList;
     getEmailCRM: typeof thunkApiCall;
     errorMessage?: string;
     isFetching: boolean;
@@ -64,7 +64,7 @@ interface EmailCRMProps {
 
 interface EmailCRMState {
     emailCrm: EmailCRM;
-    emailCrmList: EmailCRM[];
+    emailCrmList: EmailCRMList;
     snackbarOpen: boolean;
     autoHideDuration: number;
   } 
@@ -78,7 +78,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     }
   
     // state = {
-    //   emailCrm: {},
+    //   emailCrm: {} as EmailCRM,
     //   emailCrmList: [],
     //   snackbarOpen: false,
     //   autoHideDuration: 2000,
@@ -118,12 +118,12 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
         console.log(this.props);
-        // console.log(this.props.emailCrmList.length);
+        console.log(emailCrmList.length);
         
         return (
             <div style={{display: 'flex'}}>
-                <Paper elevation={3} style={classes.paper}>
-                    { emailCrmList.length > 0 && emailCrmList.map((email, index) => 
+                {/* <Paper elevation={3} style={classes.paper}>
+                    { emailCrmList.length > 0 && emailCrmList.map((email: { from: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; subject: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; date: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; }, index: React.Key) => 
                         (<Grid item container xs={12} style={classes.containerP} key={index}>
                             <Grid item xs={2}>
                             </Grid>
@@ -138,7 +138,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                             </Grid>
                         </Grid> ))
                     }                 
-                </ Paper> 
+                </ Paper>  */}
             </div>
         );
     }

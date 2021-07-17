@@ -21,6 +21,7 @@ const styles = {
 
 const DashboardPage = () => {
   console.log();
+  const tempData = [];
   return (
     <>
       <Grid container >
@@ -33,7 +34,7 @@ const DashboardPage = () => {
           </Grid>
           <Grid item container style={{height: `calc(100% - 50px * 2)`}} >
             <Grid item style={ styles.cell } xs={12} md={8}>
-              <Inbox />
+              <Inbox emailCrmList={this.props.emailCrmList} />
             </Grid>
             <Grid item style={styles.cell} xs={12} md={4} >
               <RightSection data={Data.dashBoardPage.rightSection} />
