@@ -5,7 +5,7 @@ import {Print, Launch, AccountCircle, StarBorder, Reply, MoreVert, DoubleArrow} 
 import { connect } from "react-redux";
 import { getAction } from "../actions/emailcrm";
 import { thunkApiCall } from "../services/thunks";
-import { EmailCRM} from "../types";
+import { EmailCRM, EmailCRMList } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 
 const useStyles = () => {
@@ -95,8 +95,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
   
     componentDidUpdate(prevProps) {
       // reset page if items array has changed
-      if (this.props.emailCrm !== prevProps.emailCrm) {
-        this.setState({ emailCrm: this.props.emailCrm });
+      if (this.props.emailCrmList !== prevProps.emailCrmList) {
+        this.setState({ emailCrmList: this.props.emailCrmList });
       }
       if (
         this.props.updated !== prevProps.updated &&
@@ -120,8 +120,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         
         return (
             <div style={{display: 'flex'}}>
-                <Paper elevation={3} style={classes.paper}>
-                    {/* { emailList.length>0 && emailList.map((email, index) => 
+                {/* <Paper elevation={3} style={classes.paper}>
+                    { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                         (<Grid item container xs={12} style={classes.containerP} >
                             <Grid item xs={2}>
                             </Grid>
@@ -135,8 +135,8 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                 {email.date}
                             </Grid>
                         </Grid> ))
-                    }                  */}
-                </ Paper> 
+                    }                 
+                </ Paper>  */}
             </div>
         );
     }
@@ -145,12 +145,14 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
 function mapStateToProps(state) {
     const {
       emailCrm,
+      emailCrmList,
       isFetching,
       updated,
     } = state.emailCrm;
   
     return {
       emailCrm,
+      emailCrmList,
       isFetching,
       updated,
     };
