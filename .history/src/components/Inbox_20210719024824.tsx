@@ -81,7 +81,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     state = {
       emailCrm: {} as EmailCRM,
       emailCrmList: [] as EmailCRM[],
-      emailCrmId: 1,      
+      emailCrmId: -1,      
     };
     
     sendDataToParent = (index) => {
@@ -95,21 +95,21 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       // const emailId = this.state.emailCrmId;
       const emailId = 1;
       console.log(emailId);
-      if (emailId === 1) {
+      // if (emailId === -1) {
       //     action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
       //     this.props.getEmailCRM(action);
       // } else {
           action = getAction(GET_EMAILCRM, emailId); //  Object.assign({}, this.getAction);
           console.log(emailId);
           this.props.getEmailCRM(action);  
-      };
-    } 
+      // };
 
+    } 
     componentDidUpdate(prevProps) {
       // reset page if items array has changed
       if (this.props.emailCrmList !== prevProps.emailCrmList) {
         this.setState({ emailCrmList: this.props.emailCrmList });
-      } 
+      }  
     }
 
     
@@ -117,13 +117,13 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     render() {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
-        const emailId = -1;
+        const emailCrmId = 1;
         // console.log(this.props);
         
         return (
             <div>
               {
-                  (emailId < -1) ? (
+                  (emailCrmId === 1) ? (
                     <Paper elevation={3} style={classes.paper}>
                         { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                             <EmailListRow email={email} key={index} emailId={index} sendDataToParent={this.sendDataToParent} />)
@@ -131,7 +131,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                     </ Paper> 
                   ) : (
 
-                    <DetailEmail email={emailCrm} emailId={this.state.emailCrmId} />
+                    <DetailEmail email={emailCrm} />
 
                   )
               }

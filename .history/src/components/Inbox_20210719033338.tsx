@@ -109,7 +109,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       // reset page if items array has changed
       if (this.props.emailCrmList !== prevProps.emailCrmList) {
         this.setState({ emailCrmList: this.props.emailCrmList });
-      } 
+      }  
     }
 
     

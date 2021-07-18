@@ -93,9 +93,9 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       //   @ts-ignore
       let action: ApiAction;
       // const emailId = this.state.emailCrmId;
-      const emailId = 1;
+      const emailId = -1;
       console.log(emailId);
-      if (emailId === 1) {
+      if (emailId === -1) {
       //     action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
       //     this.props.getEmailCRM(action);
       // } else {
@@ -109,7 +109,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       // reset page if items array has changed
       if (this.props.emailCrmList !== prevProps.emailCrmList) {
         this.setState({ emailCrmList: this.props.emailCrmList });
-      } 
+      }  
     }
 
     

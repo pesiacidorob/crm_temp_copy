@@ -107,7 +107,7 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
         const { email } = this.props;
         const {emailId} = this.props;
         const mail = email[emailId];
-        console.log(mail);
+        console.log(email);
         
         return (
             <div style={{display: 'flex'}}>
