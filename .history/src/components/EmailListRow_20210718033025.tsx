@@ -1,8 +1,7 @@
-import React from 'react';
-import { TableCell } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Button, TableCell } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -23,12 +22,21 @@ const useStyles = makeStyles({
   }
 });
 
-export default function EmailListRow({ email, key, emailId, sendDataToParent }){
+export default function EmailListRow(props){
 
     const classes = useStyles();
+    const [ id, setId ] = useState(-1);
+
+    // useEffect(() => {
+    //   setId(props.email.index);
+    // });
+    console.log(props.email.index)
 
     return (
-      <TableRow key={key}>
+      <TableRow key={props.id}  onClick={() => setId(props.email.index)}>
+        <Button onClick={() => useEffect}>
+          {id}
+        </Button>
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -37,10 +45,9 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <Button onClick={()=>{sendDataToParent(emailId)}}>{emailId}</Button>
-        <TableCell><Typography className={classes.column}>{email.from}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.date}</Typography></TableCell>
+        <TableCell><Typography className={classes.column}>{props.email.from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{props.email.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{props.email.date}</Typography></TableCell>
       </TableRow>
     );    
 }

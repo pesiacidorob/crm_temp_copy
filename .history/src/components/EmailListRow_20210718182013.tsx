@@ -1,12 +1,10 @@
-import React from 'react';
-import { TableCell } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Button, TableCell } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-
 
 const useStyles = makeStyles({  
   column: {
@@ -23,12 +21,26 @@ const useStyles = makeStyles({
   }
 });
 
-export default function EmailListRow({ email, key, emailId, sendDataToParent }){
+export default function EmailListRow({email, key, emailId}){
 
     const classes = useStyles();
+    const [ mailId, setMailId ] = useState(-1);
+
+    useEffect(() => {
+      setMailId(emailId);
+      // action = getAction(GET_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
+      // this.props.getEmailCRM(action);
+    }, [emailId]);
+
+    console.log(email);
+    console.log(mailId);
+    console.log(emailId);
 
     return (
-      <TableRow key={key}>
+      <TableRow key={key} onClick={() => useEffect}>
+        <Button onClick={() => useEffect}>
+          {mailId}
+        </Button>
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -37,7 +49,6 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <Button onClick={()=>{sendDataToParent(emailId)}}>{emailId}</Button>
         <TableCell><Typography className={classes.column}>{email.from}</Typography></TableCell>
         <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
         <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.date}</Typography></TableCell>

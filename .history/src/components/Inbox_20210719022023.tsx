@@ -81,28 +81,26 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     state = {
       emailCrm: {} as EmailCRM,
       emailCrmList: [] as EmailCRM[],
-      emailCrmId: -1,      
-    };
-    
-    sendDataToParent = (index) => {
-      console.log(index);
-      this.setState({ emailCrmId: index })
-    };
+      emailCrmId: -1,
+      
+    };  
 
+  
     componentDidMount() {
       //   @ts-ignore
+      const emailCrmId = -1;
       let action: ApiAction;
-      const emailId = this.state.emailCrmId;
-      console.log(emailId);
-      if (emailId === -1) {
+      if (emailCrmId === -1) {
           action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
           this.props.getEmailCRM(action);
-      } else {
-          action = getAction(GET_EMAILCRM, emailId); //  Object.assign({}, this.getAction);
-          this.props.getEmailCRM(action);  
-      };
+        };
 
-    } 
+      if (emailCrmId >= 0) {
+          action = getAction(GET_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
+          this.props.getEmailCRM(action);
+      };
+    }
+  
     componentDidUpdate(prevProps) {
       // reset page if items array has changed
       if (this.props.emailCrmList !== prevProps.emailCrmList) {
@@ -110,7 +108,12 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       }  
     }
 
-    
+    sendDataToParent = (index) => {
+        console.log(index);
+        this.setState({
+          emailCrmId: index,
+        })
+    };
       
     render() {
         const classes = useStyles();

@@ -24,7 +24,7 @@ export function getEmailCRM(result?: TODO) {
 }
 
 export function getAction(action: EmailCRMActions,
-  id?: number, data?: Entity, query?: string): ApiAction {
+  id = 0, data?: Entity, query?: string): ApiAction {
 
   switch (action) {
     case GET_EMAILCRM:

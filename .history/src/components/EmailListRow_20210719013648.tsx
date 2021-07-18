@@ -2,7 +2,6 @@ import React from 'react';
 import { TableCell } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -23,12 +22,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function EmailListRow({ email, key, emailId, sendDataToParent }){
+export default function EmailListRow(email){
 
     const classes = useStyles();
 
     return (
-      <TableRow key={key}>
+      <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -37,10 +36,9 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <Button onClick={()=>{sendDataToParent(emailId)}}>{emailId}</Button>
-        <TableCell><Typography className={classes.column}>{email.from}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.date}</Typography></TableCell>
+        <TableCell><Typography className={classes.column}>{email.email.from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.email.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.email.date}</Typography></TableCell>
       </TableRow>
     );    
 }

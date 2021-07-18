@@ -68,55 +68,58 @@ interface EmailCRMProps {
 interface EmailCRMState {
     emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
-    emailCrmId: number;
+    snackbarOpen: boolean;
+    autoHideDuration: number;
   } 
 class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(props) {
       super(props);
       // this.handleChange = this.handleChange.bind(this);
-      this.sendDataToParent = this.sendDataToParent.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
     }
   
     state = {
       emailCrm: {} as EmailCRM,
       emailCrmList: [] as EmailCRM[],
-      emailCrmId: -1,      
-    };
-    
-    sendDataToParent = (index) => {
-      console.log(index);
-      this.setState({ emailCrmId: index })
-    };
-
+      snackbarOpen: false,
+      autoHideDuration: 2000,
+    };  
+  
     componentDidMount() {
       //   @ts-ignore
+      const emailCrmId = 1;
       let action: ApiAction;
-      const emailId = this.state.emailCrmId;
-      console.log(emailId);
-      if (emailId === -1) {
-          action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
+      if (emailCrmId === 1) {
+          action = getAction(LIST_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
           this.props.getEmailCRM(action);
-      } else {
-          action = getAction(GET_EMAILCRM, emailId); //  Object.assign({}, this.getAction);
-          this.props.getEmailCRM(action);  
-      };
+        };
 
-    } 
+      if (emailCrmId === 1) {
+          action = getAction(GET_EMAILCRM, emailCrmId); //  Object.assign({}, this.getAction);
+          this.props.getEmailCRM(action);
+      };
+    }
+  
     componentDidUpdate(prevProps) {
       // reset page if items array has changed
       if (this.props.emailCrmList !== prevProps.emailCrmList) {
         this.setState({ emailCrmList: this.props.emailCrmList });
-      }  
+      }
+      if (
+        this.props.updated !== prevProps.updated &&
+        this.props.updated === true
+      ) {
+        this.setState({ snackbarOpen: true });
+      }
+  
     }
-
-    
       
     render() {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
-        const emailCrmId = 1;
-        // console.log(this.props);
+        const emailCrmId = emailCrm.id;
+        console.log(this.props);
         
         return (
             <div>
@@ -124,7 +127,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                   (emailCrmId === 1) ? (
                     <Paper elevation={3} style={classes.paper}>
                         { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                            <EmailListRow email={email} key={index} emailId={index} sendDataToParent={this.sendDataToParent} />)
+                            <EmailListRow email={email} key={index} emailId={index}/>)
                         } 
                     </ Paper> 
                   ) : (

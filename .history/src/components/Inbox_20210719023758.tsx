@@ -93,7 +93,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       //   @ts-ignore
       let action: ApiAction;
       const emailId = this.state.emailCrmId;
-      console.log(emailId);
       if (emailId === -1) {
           action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
           this.props.getEmailCRM(action);
