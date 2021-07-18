@@ -8,7 +8,6 @@ import { thunkApiCall } from "../services/thunks";
 import { EmailCRM, EmailCRMList } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 import EmailListRow from "./EmailListRow";
-import DetailEmail from "./DetailEmail";
 
 const useStyles = () => {
     return {
@@ -118,23 +117,17 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { emailCrm, emailCrmList } = this.props;
-        console.log(emailCrmList);
-        console.log(emailCrm);
-        const emailCrmId = emailCrm.id;
+        const { isFetching, emailCrm, emailCrmList } = this.props;
+        console.log(this.props);
         
         return (
-             (emailCrmId === -1) ? (
-              <div style={{display: 'flex'}}>
-                  <Paper elevation={3} style={classes.paper}>
-                      { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                          <EmailListRow email={email} key={index} emailId={index} />)
-                        } 
-                  </ Paper> 
-              </div>
-             ) : (
-                <DetailEmail />
-             )          
+            <div style={{display: 'flex'}}>
+                <Paper elevation={3} style={classes.paper}>
+                    { emailCrmList.length>0 && emailCrmList.map((email, index) => 
+                        <EmailListRow email={email} key={index} />)
+                    } 
+                </ Paper> 
+            </div>
         );
     }
 }

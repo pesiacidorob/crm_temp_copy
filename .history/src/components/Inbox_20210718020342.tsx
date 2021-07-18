@@ -8,7 +8,6 @@ import { thunkApiCall } from "../services/thunks";
 import { EmailCRM, EmailCRMList } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 import EmailListRow from "./EmailListRow";
-import DetailEmail from "./DetailEmail";
 
 const useStyles = () => {
     return {
@@ -23,39 +22,10 @@ const useStyles = () => {
             margin: 0,
             height: 'auto'
         },
-        column: {
-            overflowX: 'hidden',
-            textOverflow: 'ellipsis',
-        },
-        breadcrumbsFont: {
-            fontSize: '12px',
-        },
-        containerP: {
-            padding: '20px 25px 0px 25px'
-        }, 
-        table: {
-        minWidth: 'auto',
-        },
-        caret: {
-            height: 15,
-            backgroundImage: 'url(https://www.gstatic.com/images/icons/material/system/1x/arrow_drop_down_black_20dp.png)',
-            width: 15,
-            cursor: 'pointer',  
-        },
-        cellflex: {
-            display: 'flex',
-            fontSize: '12px'
-        },
-        font: {
-            fontSize: '12px',
-            lineHeight: 'o.5'
-        },
-        pad: {
-            padding: '20px'
-        }
     }
 }
 interface EmailCRMProps {
+    id: number;
     match?: match;
     emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
@@ -66,6 +36,7 @@ interface EmailCRMProps {
 }  
 
 interface EmailCRMState {
+    id: number;
     emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
     snackbarOpen: boolean;
@@ -78,13 +49,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       // this.handleClick = this.handleClick.bind(this);
       this.onSnackBarClose = this.onSnackBarClose.bind(this);
     }
-  
-    state = {
-      emailCrm: {} as EmailCRM,
-      emailCrmList: [] as EmailCRM[],
-      snackbarOpen: false,
-      autoHideDuration: 2000,
-    };  
   
     componentDidMount() {
     //   @ts-ignore
@@ -118,41 +82,29 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { emailCrm, emailCrmList } = this.props;
-        console.log(emailCrmList);
-        console.log(emailCrm);
-        const emailCrmId = emailCrm.id;
-        
+        const { emailCrmList } = this.props;
+        console.log(this.props);
+        function handleSelect(e) {
+          e.preventDefault();
+          this.setState({ id: e.index});
+        }
         return (
-             (emailCrmId === -1) ? (
-              <div style={{display: 'flex'}}>
-                  <Paper elevation={3} style={classes.paper}>
-                      { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                          <EmailListRow email={email} key={index} emailId={index} />)
-                        } 
-                  </ Paper> 
-              </div>
-             ) : (
-                <DetailEmail />
-             )          
+            <div style={{display: 'flex'}}>
+                <Paper elevation={3} style={classes.paper}>
+                    { emailCrmList.length>0 && emailCrmList.map((email, index) => 
+                        <EmailListRow email={email} key={index} onClick={handleSelect} />)
+                    } 
+                </ Paper> 
+            </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const {
-      emailCrm,
-      emailCrmList,
-      isFetching,
-      updated,
-    } = state.emailCrm;
+    const { emailCrm, emailCrmList, isFetching, updated } = state.emailCrm;
+    const { id } = state.emailCrm.emailCrm;
   
-    return {
-      emailCrm,
-      emailCrmList,
-      isFetching,
-      updated,
-    };
+    return { emailCrm, emailCrmList, isFetching, updated, id };
 }
   
 function mapDispatchToProps(dispatch) {

@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
+
 const useStyles = makeStyles({  
   column: {
     textOverflow: 'ellipsis',
@@ -21,23 +22,20 @@ const useStyles = makeStyles({
   }
 });
 
-export default function EmailListRow({email, key, emailId}){
+export default function EmailListRow(props){
 
     const classes = useStyles();
-    const [ mailId, setMailId ] = useState(-1);
+    const [ id, setId ] = useState(-1);
 
-    useEffect(() => {
-      setMailId(emailId);
-    }, [emailId]);
-
-    console.log(email);
-    console.log(mailId);
-    console.log(emailId);
+    // useEffect(() => {
+    //   setId(props.email.index);
+    // });
+    console.log(props)
 
     return (
-      <TableRow key={key} onClick={() => useEffect}>
+      <TableRow key={props.key}  onClick={() => setId(props.key)}>
         <Button onClick={() => useEffect}>
-          {mailId}
+          {props.key}
         </Button>
         <TableCell padding="checkbox">
           <Checkbox
@@ -47,9 +45,9 @@ export default function EmailListRow({email, key, emailId}){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <TableCell><Typography className={classes.column}>{email.from}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.date}</Typography></TableCell>
+        <TableCell><Typography className={classes.column}>{props.email.from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{props.email.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{props.key}</Typography></TableCell>
       </TableRow>
     );    
 }

@@ -5,6 +5,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { EmailCRM } from '../types';
+
 
 const useStyles = makeStyles({  
   column: {
@@ -21,24 +23,25 @@ const useStyles = makeStyles({
   }
 });
 
-export default function EmailListRow({email, key, emailId}){
+
+export default function EmailListRow(props){
 
     const classes = useStyles();
-    const [ mailId, setMailId ] = useState(-1);
+    const [ mailId, setmailId ] = useState(-1);
 
-    useEffect(() => {
-      setMailId(emailId);
-    }, [emailId]);
-
-    console.log(email);
-    console.log(mailId);
-    console.log(emailId);
+    // useEffect(() => {
+    //   setId(props.key);
+    // });
+    console.log(props);
 
     return (
-      <TableRow key={key} onClick={() => useEffect}>
-        <Button onClick={() => useEffect}>
-          {mailId}
-        </Button>
+      <TableRow >
+        {/* <Button onClick={() => useEffect}>
+          {props.key}
+        </Button> */}
+        {/* <Button onClick={() => useState(props.date)}>
+          {props.key}
+        </Button> */}
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -47,9 +50,9 @@ export default function EmailListRow({email, key, emailId}){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <TableCell><Typography className={classes.column}>{email.from}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.date)}>{email.date}</Typography></TableCell>
+        <TableCell><Typography className={classes.column}>{props.from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{props.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{props.id}</Typography></TableCell>
       </TableRow>
     );    
 }

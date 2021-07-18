@@ -5,6 +5,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { EmailCRM } from '../types';
+
 
 const useStyles = makeStyles({  
   column: {
@@ -21,6 +23,8 @@ const useStyles = makeStyles({
   }
 });
 
+
+
 export default function EmailListRow({email, key, emailId}){
 
     const classes = useStyles();
@@ -28,15 +32,14 @@ export default function EmailListRow({email, key, emailId}){
 
     useEffect(() => {
       setMailId(emailId);
-    }, [emailId]);
-
+    });
     console.log(email);
-    console.log(mailId);
+    console.log(key);
     console.log(emailId);
 
     return (
       <TableRow key={key} onClick={() => useEffect}>
-        <Button onClick={() => useEffect}>
+        <Button onClick={() => setMailId(emailId)}>
           {mailId}
         </Button>
         <TableCell padding="checkbox">

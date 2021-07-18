@@ -121,7 +121,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         const { emailCrm, emailCrmList } = this.props;
         console.log(emailCrmList);
         console.log(emailCrm);
-        const emailCrmId = emailCrm.id;
+        const emailCrmId = -1;
         
         return (
              (emailCrmId === -1) ? (

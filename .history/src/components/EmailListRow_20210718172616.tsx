@@ -31,12 +31,12 @@ export default function EmailListRow({email, key, emailId}){
     }, [emailId]);
 
     console.log(email);
-    console.log(mailId);
+    console.log(key);
     console.log(emailId);
 
     return (
       <TableRow key={key} onClick={() => useEffect}>
-        <Button onClick={() => useEffect}>
+        <Button onClick={() => setMailId(emailId)}>
           {mailId}
         </Button>
         <TableCell padding="checkbox">

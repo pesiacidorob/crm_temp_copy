@@ -36,7 +36,7 @@ export default function EmailListRow({email, key, emailId}){
 
     return (
       <TableRow key={key} onClick={() => useEffect}>
-        <Button onClick={() => useEffect}>
+        <Button onClick={() => setMailId(emailId)}>
           {mailId}
         </Button>
         <TableCell padding="checkbox">

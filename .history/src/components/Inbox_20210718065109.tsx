@@ -8,7 +8,7 @@ import { thunkApiCall } from "../services/thunks";
 import { EmailCRM, EmailCRMList } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 import EmailListRow from "./EmailListRow";
-import DetailEmail from "./DetailEmail";
+import Example from "./Example";
 
 const useStyles = () => {
     return {
@@ -63,6 +63,7 @@ interface EmailCRMProps {
     errorMessage?: string;
     isFetching: boolean;
     updated: boolean;
+    index: number;
 }  
 
 interface EmailCRMState {
@@ -70,6 +71,7 @@ interface EmailCRMState {
     emailCrmList: EmailCRM[];
     snackbarOpen: boolean;
     autoHideDuration: number;
+    index: number;
   } 
 class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     constructor(props) {
@@ -84,6 +86,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       emailCrmList: [] as EmailCRM[],
       snackbarOpen: false,
       autoHideDuration: 2000,
+      index: null,
     };  
   
     componentDidMount() {
@@ -118,23 +121,21 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     render() {
         const classes = useStyles();
-        const { emailCrm, emailCrmList } = this.props;
+        const { isFetching, emailCrm, emailCrmList } = this.props;
         console.log(emailCrmList);
-        console.log(emailCrm);
-        const emailCrmId = emailCrm.id;
         
         return (
-             (emailCrmId === -1) ? (
-              <div style={{display: 'flex'}}>
-                  <Paper elevation={3} style={classes.paper}>
-                      { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                          <EmailListRow email={email} key={index} emailId={index} />)
-                        } 
-                  </ Paper> 
-              </div>
-             ) : (
-                <DetailEmail />
-             )          
+          <>
+            <div style={{display: 'flex'}}>
+                <Paper elevation={3} style={classes.paper}>
+                    { emailCrmList.length>0 && emailCrmList.map((email, index) => 
+                        <EmailListRow email={email} key={index} />)
+                        // console.log(index))
+                      } 
+                </ Paper> 
+            </div>
+                <Example />
+                </>
         );
     }
 }
