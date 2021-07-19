@@ -20,23 +20,15 @@ const useStyles = makeStyles({
   },
   date: {
     width: '60px'
-  },
-  rowHover: {
-    '&:hover': {
-      cursor: 'pointer', 
-      boxShadow: 'inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);'
-    }
-
   }
 });
 
 export default function EmailListRow({ email, key, emailId, sendDataToParent }){
 
     const classes = useStyles();
-    const emailDetail = { id: emailId, subject: email.subject, date: email.date, from: email.from, text: email.from }
 
     return (
-      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >
+      <TableRow key={key} onClick={()=>{sendDataToParent(emailId)}}>
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}

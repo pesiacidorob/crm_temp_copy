@@ -51,20 +51,17 @@ export function getData(action: string): Promise<TODO> {
     
   const { model, id, exp , filters} = parseRequest(action)
     console.log(id)
-
-  // if(id >= 0 && model === 'emailcrms'){
-  //   console.log('dddddddddddd')
-  //   return axios.get(`http://localhost:8080/getEmailCrm`)
-  //   .then(res => {
-  //     return {data: JSON.parse(JSON.stringify(res.data[id]))}
-  //   })
-  // } 
-  if (model === 'emailcrms') {
+  if(id >= 0 && model === 'emailcrms'){
+    console.log('dddddddddddd')
+    return axios.get(`http://localhost:8080/getEmailCrm`)
+    .then(res => {
+      return {data: JSON.parse(JSON.stringify(res.data[id]))}
+    })
+  } else if (model === 'emailcrms') {
     return axios.get(`http://localhost:8080/getEmailCrm`)
       .then(res => {
         return {data: JSON.parse(JSON.stringify(res.data))}
       })
-
   } else {
     return new Promise(function (resolve, _reject) {
       const expandModel = exp

@@ -70,7 +70,6 @@ interface EmailCRMState {
     emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
     emailCrmId: number;
-    emailData: EmailCRM;
   } 
 class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -84,15 +83,12 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     state = {
       emailCrm: {} as EmailCRM,
       emailCrmList: [] as EmailCRM[],
-      emailCrmId: -1, 
-      emailData: {} as EmailCRM,     
+      emailCrmId: -1,      
     };
     
-    sendDataToParent = (index, emailDetail) => {
+    sendDataToParent = (index) => {
       console.log(index);
-      console.log(emailDetail);
-      this.setState({ emailCrmId: index });
-      this.setState({emailData: emailDetail});
+      this.setState({ emailCrmId: index })
     };
 
     handleBack = () => {
@@ -142,16 +138,12 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                   (emailId === -1) ? (
                     <Paper elevation={3} style={classes.paper}>
                         { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                            <EmailListRow email={email} 
-                                          key={index} 
-                                          emailId={index} 
-                                          sendDataToParent={this.sendDataToParent} 
-                            />)
+                            <EmailListRow email={email} key={index} emailId={index} sendDataToParent={this.sendDataToParent} />)
                         } 
                     </ Paper> 
                   ) : (
 
-                    <DetailEmail email={emailCrm} emailData={this.state.emailData} />
+                    <DetailEmail email={emailCrm} emailId={this.state.emailCrmId} />
 
                   )
               }

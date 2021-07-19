@@ -33,10 +33,10 @@ const useStyles = makeStyles({
 export default function EmailListRow({ email, key, emailId, sendDataToParent }){
 
     const classes = useStyles();
-    const emailDetail = { id: emailId, subject: email.subject, date: email.date, from: email.from, text: email.from }
+    const emailData = { sub: email.subject, date: email.date, from: email.from, text: email.from }
 
     return (
-      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >
+      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailData)}} className={classes.rowHover} >
         <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}

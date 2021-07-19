@@ -194,7 +194,7 @@ export class ProductModel implements Product {
 }
 
 export class EmailCRMModel implements EmailCRM {
-  constructor(
+  constructor(  
     date: string,
     from: string,
     subject: string,

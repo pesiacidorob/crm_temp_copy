@@ -151,7 +151,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                     </ Paper> 
                   ) : (
 
-                    <DetailEmail email={emailCrm} emailData={this.state.emailData} />
+                    <DetailEmail email={emailCrm} emailId={this.state.emailData} />
 
                   )
               }

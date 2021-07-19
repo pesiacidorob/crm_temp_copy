@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function EmailListRow({ email, key, emailId, sendDataToParent }){
 
     const classes = useStyles();
-    const emailDetail = { id: emailId, subject: email.subject, date: email.date, from: email.from, text: email.from }
+    const emailDetail = { id: emailId, sub: email.subject, date: email.date, from: email.from, text: email.from }
 
     return (
       <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >

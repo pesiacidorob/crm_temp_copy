@@ -55,7 +55,7 @@ const useStyles = () => {
 interface EmailCRMProps {
     match?: match;
     email: EmailCRM;
-    emailData: EmailCRM;
+    emailId: number;
 }  
 export default class DetailEmail extends React.Component<EmailCRMProps> {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -105,7 +105,11 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
     render() {
         const classes = useStyles();
         const { email } = this.props;
-        const {emailData} = this.props;
+        const {emailId} = this.props;
+        const mail = email[emailId];
+        console.log(mail);
+        console.log(email);
+        console.log(emailId);
         
         return (
             <div style={{display: 'flex'}}>
@@ -135,7 +139,7 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
                                 <AccountCircle style={{fontSize: '40px'}}/>
                             </Grid>
                             <Grid item container xs={10}>
-                                <Grid item xs={12}>{emailData.from}</Grid>
+                                <Grid item xs={12}>{mail}</Grid>
                                 <Grid item xs={12} style={{display: 'flex'}}>
                                     <Typography style={classes.font}>to me</Typography>
                                     <div style={classes.caret}></div>
@@ -165,12 +169,12 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
                                 </Tooltip>
                             </Grid>
                             <Grid item xs={'auto'}>
-                                {emailData.date} beforeTime
+                                {'mail.date'} beforeTime
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} style={classes.pad}>
-                        {emailData.subject}
+                        {'mail.subject'}
                     </Grid>
                 </ Paper> 
             </div>

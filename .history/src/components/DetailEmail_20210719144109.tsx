@@ -135,7 +135,7 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
                                 <AccountCircle style={{fontSize: '40px'}}/>
                             </Grid>
                             <Grid item container xs={10}>
-                                <Grid item xs={12}>{emailData.from}</Grid>
+                                <Grid item xs={12}>{'mail.from'}</Grid>
                                 <Grid item xs={12} style={{display: 'flex'}}>
                                     <Typography style={classes.font}>to me</Typography>
                                     <div style={classes.caret}></div>
@@ -170,7 +170,7 @@ export default class DetailEmail extends React.Component<EmailCRMProps> {
                         </Grid>
                     </Grid>
                     <Grid item xs={12} style={classes.pad}>
-                        {emailData.subject}
+                        {'mail.subject'}
                     </Grid>
                 </ Paper> 
             </div>

@@ -90,7 +90,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     
     sendDataToParent = (index, emailDetail) => {
       console.log(index);
-      console.log(emailDetail);
       this.setState({ emailCrmId: index });
       this.setState({emailData: emailDetail});
     };
@@ -151,7 +150,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                     </ Paper> 
                   ) : (
 
-                    <DetailEmail email={emailCrm} emailData={this.state.emailData} />
+                    <DetailEmail email={emailCrm} emailId={this.state.emailCrmId} />
 
                   )
               }

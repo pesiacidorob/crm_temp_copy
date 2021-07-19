@@ -8,8 +8,7 @@ import { EmailCRM } from "../types";
 import { ApiAction, GET_EMAILCRM, LIST_EMAILCRM } from "../store/types";
 import EmailListRow from "./EmailListRow";
 import DetailEmail from "./DetailEmail";
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import MailList from "./mail/mails/MailList";
 
 const useStyles = () => {
     return {
@@ -70,7 +69,6 @@ interface EmailCRMState {
     emailCrm: EmailCRM;
     emailCrmList: EmailCRM[];
     emailCrmId: number;
-    emailData: EmailCRM;
   } 
 class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -78,35 +76,27 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
       super(props);
       // this.handleChange = this.handleChange.bind(this);
       this.sendDataToParent = this.sendDataToParent.bind(this);
-      this.handleBack = this.handleBack.bind(this);
     }
   
     state = {
       emailCrm: {} as EmailCRM,
       emailCrmList: [] as EmailCRM[],
-      emailCrmId: -1, 
-      emailData: {} as EmailCRM,     
+      emailCrmId: 1,      
     };
     
-    sendDataToParent = (index, emailDetail) => {
+    sendDataToParent = (index) => {
       console.log(index);
-      console.log(emailDetail);
-      this.setState({ emailCrmId: index });
-      this.setState({emailData: emailDetail});
-    };
-
-    handleBack = () => {
-      this.setState({ emailCrmId: -1 })
+      this.setState({ emailCrmId: index })
     };
 
     componentDidMount() {
       //   @ts-ignore
       let action: ApiAction;
       // const emailId = this.state.emailCrmId;
-      const emailId = this.state.emailCrmId;
+      const emailId = 1;
       console.log(emailId);
       
-      if (emailId === -1) {
+      if (emailId < 0) {
           action = getAction(LIST_EMAILCRM); //  Object.assign({}, this.getAction);
           this.props.getEmailCRM(action);
       } else {
@@ -128,34 +118,29 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
     render() {
         const classes = useStyles();
         const { isFetching, emailCrm, emailCrmList } = this.props;
-        const emailId = this.state.emailCrmId;
+        const emailId = -1;
         // console.log(this.props);
         
         return (
-            <div>
-              <Paper>
-                <IconButton onClick={this.handleBack}>
-                    <ArrowBackIcon />
-                </IconButton>
-              </Paper>
-              {
-                  (emailId === -1) ? (
-                    <Paper elevation={3} style={classes.paper}>
-                        { emailCrmList.length>0 && emailCrmList.map((email, index) => 
-                            <EmailListRow email={email} 
-                                          key={index} 
-                                          emailId={index} 
-                                          sendDataToParent={this.sendDataToParent} 
-                            />)
-                        } 
-                    </ Paper> 
-                  ) : (
+            // <div>
+            //   {
+            //       (emailId < -1) ? (
+            //         <Paper elevation={3} style={classes.paper}>
+            //             { emailCrmList.length>0 && emailCrmList.map((email, index) => 
+            //                 <EmailListRow email={email} key={index} emailId={index} sendDataToParent={this.sendDataToParent} />)
+            //             } 
+            //         </ Paper> 
+            //       ) : (
 
-                    <DetailEmail email={emailCrm} emailData={this.state.emailData} />
+            //         <DetailEmail email={emailCrm} emailId={this.state.emailCrmId} />
 
-                  )
-              }
-            </div>
+            //       )
+            //   }
+            // </div>
+
+            <>
+              <MailList />
+            </>
         );
     }
 }
