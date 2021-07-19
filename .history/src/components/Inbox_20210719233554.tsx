@@ -1,6 +1,6 @@
 import React from 'react';
 import { match } from "react-router-dom";
-import { Paper, Table } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { connect } from "react-redux";
 import { getAction } from "../actions/emailcrm";
 import { thunkApiCall } from "../services/thunks";
@@ -19,15 +19,13 @@ const useStyles = () => {
             flexWrap: 'wrap',
             height: '100%'
         },
-        tableWidth: {
-          minWidth: 300
-        },
         paper: {
-            width: '100%',
-            minHeight: 705,
-            margin: 0,
-            height: 'auto',
-            display: 'block',
+            // width: '100%',
+            // minHeight: 705,
+            // margin: 0,
+            // height: 'auto',
+            // display: 'block'
+            minWidth: 650
         },
         column: {
             overflowX: 'hidden',
@@ -39,7 +37,7 @@ const useStyles = () => {
         containerP: {
             padding: '20px 25px 0px 25px'
         }, 
-        tablea: {
+        table: {
         minWidth: 'auto',
         },
         caret: {
@@ -148,7 +146,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
               {
                   (emailId === -1) ? (
                     <Paper style={classes.paper}>
-                      <Table style={classes.tableWidth}>
                         { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                             <EmailListRow email={email} 
                                           key={index} 
@@ -156,7 +153,6 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
                                           sendDataToParent={this.sendDataToParent} 
                             />)
                         } 
-                      </Table>
                     </ Paper> 
                   ) : (
 

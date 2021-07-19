@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     maxWidth: '150px',
   },
   sub: {
-    maxWidth: '300px'
+    maxWidth: '346px'
   },
   date: {
     width: '50px'
@@ -27,7 +27,8 @@ const useStyles = makeStyles({
     '&:hover': {
       cursor: 'pointer', 
       boxShadow: 'inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);',
-    }
+    },
+    display: 'flex',
   },
   cellFrom: {
     maxWidth: '150px',
@@ -88,7 +89,7 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
     const emailDetail = { id: emailId, subject: email.subject, date: emailDate, from: e_from, text: email.from }
     console.log(e_from);
     return (     
-      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover}>
+      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}}>
         <TableCell>
           <Checkbox
               // indeterminate={numSelected > 0 && numSelected < rowCount}

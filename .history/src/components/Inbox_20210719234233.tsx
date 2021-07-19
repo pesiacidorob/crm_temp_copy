@@ -20,7 +20,7 @@ const useStyles = () => {
             height: '100%'
         },
         tableWidth: {
-          minWidth: 300
+          minWidth: 650
         },
         paper: {
             width: '100%',

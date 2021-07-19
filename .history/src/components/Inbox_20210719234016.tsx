@@ -19,8 +19,8 @@ const useStyles = () => {
             flexWrap: 'wrap',
             height: '100%'
         },
-        tableWidth: {
-          minWidth: 300
+        table: {
+          minWidth: 650
         },
         paper: {
             width: '100%',
@@ -147,16 +147,14 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
               </Paper>
               {
                   (emailId === -1) ? (
-                    <Paper style={classes.paper}>
-                      <Table style={classes.tableWidth}>
+                    <Paper style={classes.paper}><Table style={classes.tablea}>
                         { emailCrmList.length>0 && emailCrmList.map((email, index) => 
                             <EmailListRow email={email} 
                                           key={index} 
                                           emailId={index} 
                                           sendDataToParent={this.sendDataToParent} 
                             />)
-                        } 
-                      </Table>
+                        } </Table>
                     </ Paper> 
                   ) : (
 

@@ -12,13 +12,14 @@ const useStyles = makeStyles({
   column: {
     textOverflow: 'ellipsis',
     overflowX: 'hidden',
+    width: 'auto',
     whiteSpace: 'nowrap',
   },
   from: {
     maxWidth: '150px',
   },
   sub: {
-    maxWidth: '300px'
+    maxWidth: '346px'
   },
   date: {
     width: '50px'
@@ -27,21 +28,13 @@ const useStyles = makeStyles({
     '&:hover': {
       cursor: 'pointer', 
       boxShadow: 'inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);',
-    }
-  },
-  cellFrom: {
-    maxWidth: '150px',
-    flex: '0 0 auto',
-    display: 'flex',
-    flexBasis: '150px',
-  },
-  cellSub: {
-    minWidth: '0px',
-    flex: '0 0 auto',
-    display: 'flex',
-  },
-  cellDate: {
-    width: '50px',
+      
+    },
+    overflowX: 'scroll',
+    width: '100%',
+    display: 'flex'
+
+
   }
 });
 
@@ -87,19 +80,19 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
     
     const emailDetail = { id: emailId, subject: email.subject, date: emailDate, from: e_from, text: email.from }
     console.log(e_from);
-    return (     
-      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover}>
-        <TableCell>
+    return (
+      <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >
+        <TableCell padding="checkbox" style={{width: '40px'}}>
           <Checkbox
-              // indeterminate={numSelected > 0 && numSelected < rowCount}
-              // checked={rowCount > 0 && numSelected === rowCount}
-              // onChange={onSelectAllClick}
-              inputProps={{ 'aria-label': 'select all desserts' }}
-            />
-          </TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.from)}>{e_from}</Typography></TableCell>
-        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell><Typography>{emailDate}</Typography></TableCell>
+            // indeterminate={numSelected > 0 && numSelected < rowCount}
+            // checked={rowCount > 0 && numSelected === rowCount}
+            // onChange={onSelectAllClick}
+            inputProps={{ 'aria-label': 'select all desserts' }}
+          />
+        </TableCell>
+        <TableCell style={{width: '20%'}}><Typography className={clsx(classes.column, classes.from)}>{e_from}</Typography></TableCell>
+        <TableCell style={{width: '60%'}}><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
+        <TableCell style={{width: '10%'}}><Typography className={clsx(classes.column, classes.date)}>{emailDate}</Typography></TableCell>
       </TableRow>
     );    
 }
