@@ -1,10 +1,11 @@
 import React from 'react';
-import clsx from 'clsx';
+import { TableCell } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import { TableCell } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+
 
 const useStyles = makeStyles({  
   column: {
