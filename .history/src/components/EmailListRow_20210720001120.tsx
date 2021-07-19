@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     maxWidth: '150px',
   },
   sub: {
-    maxWidth: '250px'
+    maxWidth: '300px'
   },
   date: {
     width: '50px'
@@ -29,6 +29,20 @@ const useStyles = makeStyles({
       boxShadow: 'inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);',
     }
   },
+  cellFrom: {
+    maxWidth: '150px',
+    flex: '0 0 auto',
+    display: 'flex',
+    flexBasis: '150px',
+  },
+  cellSub: {
+    maxWidth: '300px',
+    flex: '0 0 auto',
+    display: 'flex',
+  },
+  cellDate: {
+    width: '50px',
+  }
 });
 
 export default function EmailListRow({ email, key, emailId, sendDataToParent }){

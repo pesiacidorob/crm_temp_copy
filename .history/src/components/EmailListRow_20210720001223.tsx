@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     maxWidth: '150px',
   },
   sub: {
-    maxWidth: '250px'
+    maxWidth: '275px'
   },
   date: {
     width: '50px'
