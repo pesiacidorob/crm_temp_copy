@@ -12,7 +12,7 @@ import LeadCard from "./leadCard";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: 0,
-    height: '833px'
+    height: '780px'
   },
   title: {
     margin: theme.spacing(4, 0, 2),

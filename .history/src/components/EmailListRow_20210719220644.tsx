@@ -12,14 +12,14 @@ const useStyles = makeStyles({
   column: {
     textOverflow: 'ellipsis',
     overflowX: 'hidden',
-    width: 'auto',
+    width: '120px',
     whiteSpace: 'nowrap',
   },
   sub: {
-    width: 'auto'
+    width: '262px'
   },
   date: {
-    width: 'auto'
+    width: '60px'
   },
   rowHover: {
     '&:hover': {

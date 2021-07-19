@@ -12,14 +12,14 @@ const useStyles = makeStyles({
   column: {
     textOverflow: 'ellipsis',
     overflowX: 'hidden',
-    width: 'auto',
+    width: '120px',
     whiteSpace: 'nowrap',
   },
   sub: {
-    width: 'auto'
+    width: '262px'
   },
   date: {
-    width: 'auto'
+    width: '60px'
   },
   rowHover: {
     '&:hover': {
@@ -74,7 +74,7 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
     console.log(e_from);
     return (
       <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >
-        <TableCell padding="checkbox" style={{width: '10%'}}>
+        <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
             // checked={rowCount > 0 && numSelected === rowCount}
@@ -82,9 +82,9 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <TableCell style={{width: '20%'}}><Typography className={classes.column}>{e_from}</Typography></TableCell>
-        <TableCell style={{width: '60%'}}><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell style={{width: '10%'}}><Typography className={clsx(classes.column, classes.date)}>{emailDate}</Typography></TableCell>
+        <TableCell style={{width: '50%'}}><Typography className={classes.column}>{e_from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{emailDate}</Typography></TableCell>
       </TableRow>
     );    
 }

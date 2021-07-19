@@ -12,7 +12,7 @@ import LeadCard from "./leadCard";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: 0,
-    height: '833px'
+    height: '792px'
   },
   title: {
     margin: theme.spacing(4, 0, 2),
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: 0,
     maxHeight: `calc(100% - 160px)`,
-    height: '833px'
+    height: '624px'
   },
   list: {
     margin: theme.spacing(1),

@@ -12,14 +12,14 @@ const useStyles = makeStyles({
   column: {
     textOverflow: 'ellipsis',
     overflowX: 'hidden',
-    width: 'auto',
+    width: '120px',
     whiteSpace: 'nowrap',
   },
   sub: {
-    width: 'auto'
+    width: '262px'
   },
   date: {
-    width: 'auto'
+    width: '60px'
   },
   rowHover: {
     '&:hover': {
@@ -35,46 +35,48 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
     const classes = useStyles();
     const e_from = email.from.slice(0, email.from.indexOf("<"));
     // ========== get email date ============
-    const myEmailDate = new Date(email.date);
-    const e_h = myEmailDate.getHours();
-    const e_m = myEmailDate.getMinutes();
-    const time = e_h + ":" + e_m;
-    
-    const month = [];
-    month[0] = "Jan";
-    month[1] = "Feb";
-    month[2] = "Mar";
-    month[3] = "Apr";
-    month[4] = "May";
-    month[5] = "Jun";
-    month[6] = "Jul";
-    month[7] = "Aug";
-    month[8] = "Sep";
-    month[9] = "Oct";
-    month[10] = "Nov";
-    month[11] = "Dec";
-  
-    const m = month[myEmailDate.getMonth()];
+    const e_date_h = email.date.getHours();
+    console.log(e_from);
+    console.log(e_date_h);
+    const e_date_m = email.date.getMinutes();
+    const e_date = e_date_h + ":" + e_date_m;
     const today = new Date().getDate();
-    const d = myEmailDate.getDate();
+    const date = email.date.getDate();
+
+    const month = new Array();
+          month[0] = "Jan";
+          month[1] = "Feb";
+          month[2] = "Mar";
+          month[3] = "Apr";
+          month[4] = "May";
+          month[5] = "Jun";
+          month[6] = "Jul";
+          month[7] = "Aug";
+          month[8] = "Sep";
+          month[9] = "Oct";
+          month[10] = "Nov";
+          month[11] = "Dec";
+        
+    const m = month[email.date.getMonth()];
+    const d = email.date.getDate();
     const e_last_date = m + d; 
 
     function getEmailDate(date) {
       if(date !== today){
         return e_last_date;
       } else {
-        return time;
+        return e_date;
       }
     }
 
-    const emailDate = getEmailDate(d);
+    const emailDate = getEmailDate(date);
     // ================================
     
     const emailDetail = { id: emailId, subject: email.subject, date: emailDate, from: e_from, text: email.from }
     console.log(e_from);
     return (
       <TableRow key={key} onClick={()=>{sendDataToParent(emailId, emailDetail)}} className={classes.rowHover} >
-        <TableCell padding="checkbox" style={{width: '10%'}}>
+        <TableCell padding="checkbox">
           <Checkbox
             // indeterminate={numSelected > 0 && numSelected < rowCount}
             // checked={rowCount > 0 && numSelected === rowCount}
@@ -82,9 +84,9 @@ export default function EmailListRow({ email, key, emailId, sendDataToParent }){
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        <TableCell style={{width: '20%'}}><Typography className={classes.column}>{e_from}</Typography></TableCell>
-        <TableCell style={{width: '60%'}}><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
-        <TableCell style={{width: '10%'}}><Typography className={clsx(classes.column, classes.date)}>{emailDate}</Typography></TableCell>
+        <TableCell><Typography className={classes.column}>{e_from}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.sub)}>{email.subject}</Typography></TableCell>
+        <TableCell><Typography className={clsx(classes.column, classes.date)}>{emailDate}</Typography></TableCell>
       </TableRow>
     );    
 }

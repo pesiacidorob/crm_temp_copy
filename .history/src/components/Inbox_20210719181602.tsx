@@ -135,7 +135,7 @@ class Inbox extends React.Component<EmailCRMProps, EmailCRMState> {
         return (
             <div>
               <Paper>
-                <Tooltip title="back" arrow placement="top">
+                <Tooltip title="back">
                   <IconButton onClick={this.handleBack}>
                       <ArrowBackIcon />
                   </IconButton>
