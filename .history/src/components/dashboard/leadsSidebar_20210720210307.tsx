@@ -10,7 +10,7 @@ import SimpleDatepicker from "../SimpleDatepicker";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: 0,
-    height: '828px'
+    height: '833px'
   },
   title: {
     margin: theme.spacing(4, 0, 2),
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: 0,
     maxHeight: `calc(100% - 150px)`,
-    height: '829px'
   },
   list: {
     margin: theme.spacing(1),

@@ -23,7 +23,7 @@ const DashboardPage = () => {
   console.log();
   return (
     <>
-      <Grid container style={{padding: '1px'}}>
+      <Grid  >
         <Grid item xs={12} md={3} style={{height: '819px'}}>
           <LeadsSidebar data={Data.dashBoardPage.rightSection} />
         </Grid>

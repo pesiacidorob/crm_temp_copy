@@ -10,7 +10,7 @@ import SimpleDatepicker from "../SimpleDatepicker";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: 0,
-    height: '828px'
+    height: '833px'
   },
   title: {
     margin: theme.spacing(4, 0, 2),
