@@ -54,16 +54,16 @@ export default function LeadCard(props) {
         <div className={classes.title} >
           <Typography variant="subtitle2">Email Replied</Typography>
         </div>
-        <IconButton color="secondary" className={classes.iconbutton} >
-          <DirectionsCarIcon/>
+        <IconButton className={classes.iconbutton} >
+          <DirectionsCarIcon color="primary"/>
         </IconButton>
-        <IconButton color="primary" className={classes.iconbutton} >
-          <DeleteForeverIcon/>
+        <IconButton className={classes.iconbutton} >
+          <DeleteForeverIcon style={{ color: green[500] }}/>
         </IconButton>
-        <IconButton style={{ color: 'green' }} className={classes.iconbutton} >
+        <IconButton className={classes.iconbutton} >
           <SendIcon/>
         </IconButton>
-        <IconButton className={classes.iconbutton} style={{color: 'rgb(241, 180, 76)'}} >
+        <IconButton color="secondary" className={classes.iconbutton} >
           <AutorenewIcon/>
         </IconButton>
       </div>

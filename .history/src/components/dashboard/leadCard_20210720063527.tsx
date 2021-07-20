@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   title: {
-    backgroundColor: "#556ee6",
+    backgroundColor: "rgba(52,195,143,.25)",
     height: "24px",
     width:"100px,",
     margin: "0 20px 0 10px",
@@ -54,16 +54,16 @@ export default function LeadCard(props) {
         <div className={classes.title} >
           <Typography variant="subtitle2">Email Replied</Typography>
         </div>
-        <IconButton color="secondary" className={classes.iconbutton} >
+        <IconButton className={classes.iconbutton} >
           <DirectionsCarIcon/>
         </IconButton>
-        <IconButton color="primary" className={classes.iconbutton} >
+        <IconButton className={classes.iconbutton} >
           <DeleteForeverIcon/>
         </IconButton>
-        <IconButton style={{ color: 'green' }} className={classes.iconbutton} >
+        <IconButton className={classes.iconbutton} >
           <SendIcon/>
         </IconButton>
-        <IconButton className={classes.iconbutton} style={{color: 'rgb(241, 180, 76)'}} >
+        <IconButton color="secondary" className={classes.iconbutton} >
           <AutorenewIcon/>
         </IconButton>
       </div>

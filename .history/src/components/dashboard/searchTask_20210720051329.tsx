@@ -1,30 +1,26 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import AppsIcon from '@material-ui/icons/Apps';
-import { grey } from "@material-ui/core/colors";
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { withStyles } from '@material-ui/core/styles';
-import Menu, { MenuProps } from '@material-ui/core/Menu';
 import { InputBase, Button } from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
+import AppsIcon from '@material-ui/icons/Apps';
+import SearchIcon from '@material-ui/icons/Search';
 import styled from 'styled-components'
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import TodayIcon from '@material-ui/icons/Today';
+import { grey } from "@material-ui/core/colors";
 
 const grey600 = grey["600"];
+
 const Button1 =styled(Button)`
   margin: 3px;
   border-radius: 0 4px 0 4px;
   line-height: 2;
-  font-size: 10;  
+  font-size: 10;
 `;
 const Button2 =styled(Button)`
   min-width: fit-content;
   font-size: 12px;
-  padding: 8px;
+  padding: 12px;
 `;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -57,13 +53,13 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 300,
       padding: "2px",
       fontSize: 10,
-      marginBottom: '0px!important',
+      marginBottom: '0px!important'
     },
     search: {
       fontSize: 10,
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: 'white',
+      backgroundColor: '#d0d0d3',
       marginLeft: 0,
       width: '100%',
       [theme.breakpoints.up('sm')]: {
@@ -102,76 +98,29 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "3px",
       justifyContent: "inherit",
     },
-    leadBtn: {
-      borderRadius: "4px", 
-      lineHeight:2, 
-      marginBottom: '0px!important', 
-      backgroundColor: "#50a5f1",
-      paddingTop: '10px',
-      paddingBottom: '10px',
-    }
   }),
 );
 
-const StyledMenu = withStyles({
-  paper: {
-    border: '1px solid #d3d4d5',
-  },
-})((props: MenuProps) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '&:focus': {
-      backgroundColor: theme.palette.primary.main,
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
-
 export default function SearchTask() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div className={classes.root} >
       <AppBar position="static" className={classes.bar} >
         <Toolbar  variant="dense" className={classes.toolbar} >
           <div className={classes.buttons} >
-            <Button1 variant="contained" size="small" style={{ backgroundColor: "#50a5f1" }}>
-              Pending
-            </Button1>
-            <Button1 variant="contained" size="small" style={{ backgroundColor: "rgba(85,110,230,.25)" }}>
-              Scheduled
-            </Button1>
-            <Button1 variant="contained" size="small" style={{ backgroundColor: "rgba(85,110,230,.25)" }}>
-              Replied
-            </Button1>
-            <Button1 variant="contained" size="small" style={{ backgroundColor: "#f1b44c"}} >
-                Accomplished
-            </Button1 >
+          <Button1 variant="contained" size="small" style={{ backgroundColor: "#00acc1" }}>
+            Pending
+          </Button1>
+          <Button1 variant="contained" size="small" style={{ backgroundColor: "#rgb(216, 27, 96)" }}>
+            Scheduled
+          </Button1>
+          <Button1 variant="contained" size="small" style={{ backgroundColor: "#8e24aa" }}>
+            Replied
+          </Button1>
+          <Button1 variant="contained" size="small" style={{ backgroundColor: "#fb8c00"}} >
+              Accomplished
+          </Button1 >
           </div>
           <div>
             {['Email', 'Call', 'SMS', 'Appt', 'Build', 'Note', 'Solid'].map((text, index) => (
@@ -179,7 +128,7 @@ export default function SearchTask() {
                 {text}
               </Button2>
             ))}
-            <Button variant="contained" size="medium" className={classes.leadBtn}>
+            <Button variant="contained" size="medium" color="primary" style={{ borderRadius: "4px", lineHeight:2}}>
               Creat leads
             </Button>
           </div>
@@ -200,32 +149,9 @@ export default function SearchTask() {
             edge="end"
             className={classes.apps}
             size='medium'
-            onClick={handleClick}
-          >
+            >
             <AppsIcon />
           </IconButton>
-          <StyledMenu
-            id="customized-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <StyledMenuItem>
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon fontSize='default' />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>   
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>         
-            </StyledMenuItem>
-          </StyledMenu>
         </Toolbar>
       </AppBar>
     </div>

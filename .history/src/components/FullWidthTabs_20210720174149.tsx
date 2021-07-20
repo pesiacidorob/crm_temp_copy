@@ -64,11 +64,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '5px',
     overflowY: 'auto',
     height: '350px',
-  },
-  btn_tabcontent: {
-    padding: '10px',
-    backgroundColor: '#50a5f1',
-  }    
+  },    
 }));
 
 const style = { 
@@ -82,6 +78,7 @@ const GlobalCss = withStyles({
             padding: '5px'
         },
         '.MuiButton-root': {
+            padding: '8px',
             lineHeight: '1',
             textTransform: 'capitalize',
             marginBottom: '10px'
@@ -102,29 +99,29 @@ export default function FullWidthTabs(props) {
         <Paper elevation={5} className={classes.tabPanel}>
             <TabPanel value={value} index={0}>
               <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#50a5f1'}}>
                 Schedule an Email
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#e83e8c'}}>
                 Build & Price-Send Deal
               </Button>
               <CustomizedTimeline data={props.data} />
             </TabPanel>
             <TabPanel value={value} index={1}>
               <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: 'rgb(52, 195, 143)'}}>
                 Financing Information
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#50a5f1'}}>
                 Vehicle Information
               </Button>
             </TabPanel>
             <TabPanel value={value} index={2}>
               <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: 'rgb(52, 195, 143)'}}>
                 Financing Information
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#50a5f1'}}>
                 Vehicle Information
               </Button>
             </TabPanel>

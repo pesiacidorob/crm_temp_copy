@@ -51,7 +51,7 @@ const useStyles = (navDrawerOpen: boolean, isSmallScreen: boolean) => {
       overflow: "auto",
     },
     content: {
-      margin: navDrawerOpen ? '50px 0px 0px 60px' : '50px 0px 0px 250px',
+      margin: isSmallScreen ? '50px 0px 0px 60px' : '50px 0px 0px 100px',
       flexGrow: 1,
       height:"785px"
     },

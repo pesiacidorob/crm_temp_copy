@@ -18,10 +18,7 @@ const useStyles = makeStyles(() =>
       paddingTop: "0.2em",
       paddingBottom: "0.2em",
       fontSize: 16,
-    },
-    menuItemIcon: {
-      color: '#79829c',
-    } 
+    }, 
 
   })
 );
@@ -34,7 +31,7 @@ export default function AppDrawerMenu() {
       {data.menus.map((menu, index) => (
         <Link key={`link_${index}`} to={menu.link} className="MuiListItem-button">
           <MenuItem key={index} className="MuiListItem-button">
-            <ListItemIcon className={styles.menuItemIcon}>{menu.icon}</ListItemIcon>
+            <ListItemIcon >{menu.icon}</ListItemIcon>
             <Typography  variant="h6" component="h6" className={styles.menuItem}>
               {menu.text}
             </Typography>

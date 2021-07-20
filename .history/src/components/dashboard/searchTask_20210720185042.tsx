@@ -1,17 +1,20 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import AppsIcon from '@material-ui/icons/Apps';
-import { grey } from "@material-ui/core/colors";
 import IconButton from '@material-ui/core/IconButton';
+import { InputBase, Button } from '@material-ui/core';
+import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
+import AppsIcon from '@material-ui/icons/Apps';
 import SearchIcon from '@material-ui/icons/Search';
+import styled from 'styled-components'
+import { grey } from "@material-ui/core/colors";
 import { withStyles } from '@material-ui/core/styles';
 import Menu, { MenuProps } from '@material-ui/core/Menu';
-import { InputBase, Button } from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import styled from 'styled-components'
 import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
 import TodayIcon from '@material-ui/icons/Today';
 
 const grey600 = grey["600"];
@@ -212,19 +215,11 @@ export default function SearchTask() {
             onClose={handleClose}
           >
             <StyledMenuItem>
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon fontSize='default' />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>   
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>         
-            </StyledMenuItem>
+              <IconButton aria-label="delete">
+                <TodayIcon />
+                <ListItemText primary="Calendar" />
+              </IconButton>
+            </StyledMenuItem>            
           </StyledMenu>
         </Toolbar>
       </AppBar>

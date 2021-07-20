@@ -20,6 +20,7 @@ const data = {
     { text: "Customer", icon: <TuneIcon />, link: "/customers" },
     { text: "Order", icon: <EventAvailableIcon />, link: "/orders" },
     { text: "Product", icon: <StoreOutlinedIcon />, link: "/products" },
+    { text: "About", icon: <CheckCircleOutlinedIcon />, link: "/about" }
   ],
   userMenus: [
     { text: "Sign out", icon: <SettingsPower />, link: "/login" },

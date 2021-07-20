@@ -60,7 +60,7 @@ export function getData(action: string): Promise<TODO> {
   //   })
   // } 
   if (model === 'emailcrms') {
-    return axios.get(`http://192.168.114.83:8080/getEmailCrm`)
+    return axios.get(`http://192.168.114.83/getEmailCrm`)
       .then(res => {
         return {data: JSON.parse(JSON.stringify(res.data))}
       })

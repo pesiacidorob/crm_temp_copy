@@ -1,18 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import AppsIcon from '@material-ui/icons/Apps';
-import { grey } from "@material-ui/core/colors";
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { withStyles } from '@material-ui/core/styles';
-import Menu, { MenuProps } from '@material-ui/core/Menu';
 import { InputBase, Button } from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
+import AppsIcon from '@material-ui/icons/Apps';
+import SearchIcon from '@material-ui/icons/Search';
 import styled from 'styled-components'
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import TodayIcon from '@material-ui/icons/Today';
+import { grey } from "@material-ui/core/colors";
 
 const grey600 = grey["600"];
 const Button1 =styled(Button)`
@@ -107,53 +102,14 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight:2, 
       marginBottom: '0px!important', 
       backgroundColor: "#50a5f1",
-      paddingTop: '10px',
-      paddingBottom: '10px',
+      paddingTop: '3px',
+      paddingBottom: '3px',
     }
   }),
 );
 
-const StyledMenu = withStyles({
-  paper: {
-    border: '1px solid #d3d4d5',
-  },
-})((props: MenuProps) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '&:focus': {
-      backgroundColor: theme.palette.primary.main,
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
-
 export default function SearchTask() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div className={classes.root} >
@@ -200,32 +156,9 @@ export default function SearchTask() {
             edge="end"
             className={classes.apps}
             size='medium'
-            onClick={handleClick}
-          >
+            >
             <AppsIcon />
           </IconButton>
-          <StyledMenu
-            id="customized-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <StyledMenuItem>
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon fontSize='default' />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>   
-              <span>
-                <IconButton aria-label="delete">
-                  <TodayIcon />
-                  <ListItemText primary="Calendar" />
-                </IconButton>
-              </span>         
-            </StyledMenuItem>
-          </StyledMenu>
         </Toolbar>
       </AppBar>
     </div>

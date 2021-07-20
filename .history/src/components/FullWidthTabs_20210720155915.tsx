@@ -55,20 +55,15 @@ const useStyles = makeStyles((theme) => ({
     '& > svg': {
         margin: theme.spacing(1),        
     },
-    backgroundColor: '#f3f3f9',
+    backgroundColor: 'lightGray',
     margin: '5px',
     display: 'flex',
     justifyContent: 'space-evenly',
   },
-  tabPanel: { 
+  tabPanelMargin: { 
     margin: '5px',
-    overflowY: 'auto',
-    height: '350px',
-  },
-  btn_tabcontent: {
-    padding: '10px',
-    backgroundColor: '#50a5f1',
-  }    
+    overflowY: 'auto'
+  },    
 }));
 
 const style = { 
@@ -82,9 +77,10 @@ const GlobalCss = withStyles({
             padding: '5px'
         },
         '.MuiButton-root': {
+            padding: '5px',
             lineHeight: '1',
             textTransform: 'capitalize',
-            marginBottom: '10px'
+            marginBottom: '8px'
         }
     }
 })(() => null);
@@ -99,53 +95,47 @@ export default function FullWidthTabs(props) {
 
   return (
     <div className={classes.root}>
-        <Paper elevation={5} className={classes.tabPanel}>
+        <Paper elevation={5} className={classes.tabPanelMargin}>
             <TabPanel value={value} index={0}>
               <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#50a5f1'}}>
                 Schedule an Email
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#e83e8c'}}>
                 Build & Price-Send Deal
               </Button>
               <CustomizedTimeline data={props.data} />
             </TabPanel>
             <TabPanel value={value} index={1}>
               <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: 'rgb(52, 195, 143)'}}>
                 Financing Information
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} style={{backgroundColor: '#50a5f1'}}>
                 Vehicle Information
               </Button>
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <GlobalCss />
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
-                Financing Information
-              </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
-                Vehicle Information
-              </Button>
+                Item Three
             </TabPanel>
         </Paper>
         <Grid className={classes.icon}>
             <IconButton>
-                <MailIcon color="primary"/>
+                <MailIcon />
             </IconButton><IconButton>
-                <CreateIcon color="primary"/>
+                <CreateIcon />
             </IconButton>
             <IconButton>
-                <CallToActionIcon color="primary"/>
+                <CallToActionIcon />
             </IconButton>
             <IconButton>
-                <LocalOfferIcon color="primary"/>
+                <LocalOfferIcon />
             </IconButton>
             <IconButton>
-                <VideocamIcon color="primary"/>
+                <VideocamIcon />
             </IconButton>
             <IconButton>
-                <CameraRearIcon color="primary"/>
+                <CameraRearIcon />
             </IconButton>
         </Grid>
         <AppBar position="static" color="default">

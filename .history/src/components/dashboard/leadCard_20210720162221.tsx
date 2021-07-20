@@ -63,7 +63,7 @@ export default function LeadCard(props) {
         <IconButton style={{ color: 'green' }} className={classes.iconbutton} >
           <SendIcon/>
         </IconButton>
-        <IconButton className={classes.iconbutton} style={{color: 'rgb(241, 180, 76)'}} >
+        <IconButton className={classes.iconbutton} >
           <AutorenewIcon/>
         </IconButton>
       </div>

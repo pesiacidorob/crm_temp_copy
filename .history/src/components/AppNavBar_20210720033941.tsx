@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
     marginLeft:"-23px",
   },
-  brand: {
-    color: "black",
-    paddingLeft: "5px",
-  }
 }));
 
 interface AppNavBarProps {
@@ -38,7 +34,7 @@ const AppNavBar: React.FC<AppNavBarProps> = ({ styles, handleDrawerToggle}) => {
   return (
     <div>
       <AppBar position="fixed" style={styles.appBar}>
-        <Toolbar variant="dense" className={styles.toolbar}>
+        <Toolbar variant="dense">
           <IconButton
             edge="start"
                onClick={handleDrawerToggle}
@@ -50,7 +46,7 @@ const AppNavBar: React.FC<AppNavBarProps> = ({ styles, handleDrawerToggle}) => {
               S
             </Typography>
           </IconButton>
-          <Typography variant="h4" className={style.brand}>
+          <Typography variant="h4" style={{paddingLeft:"5px"}} >
             Drive
           </Typography>
         </Toolbar>

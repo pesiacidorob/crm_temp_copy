@@ -115,7 +115,7 @@ export default function FullWidthTabs(props) {
               <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
                 Financing Information
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#50a5f1'}}>
                 Vehicle Information
               </Button>
             </TabPanel>
@@ -124,7 +124,7 @@ export default function FullWidthTabs(props) {
               <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent}>
                 Financing Information
               </Button>
-              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#e83e8c'}}>
+              <Button variant="contained" fullWidth={true} className={classes.btn_tabcontent} style={{backgroundColor: '#50a5f1'}}>
                 Vehicle Information
               </Button>
             </TabPanel>

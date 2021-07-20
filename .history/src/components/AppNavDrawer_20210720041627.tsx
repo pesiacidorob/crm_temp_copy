@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerOpen: {
       width: drawerWidth,
-      backgroundColor: "#2a3042",
+      backgroundColor: "rgba(227, 231, 232, 1)",
       overflow: "auto",
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
